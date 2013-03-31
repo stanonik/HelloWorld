@@ -1,0 +1,29 @@
+<project>
+
+    <property name="tomcat" value="/Users/rstanonik/apache-tomcat-7.0.32"/>
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+    <path id="servlet">
+        <fileset dir="${tomcat}" includes="**/*.jar"/>
+    </path>
+
+    <target name="compile">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="servlet" includeantruntime="false"/>
+    </target>
+
+    <target name="war" depends="compile">
+        <mkdir dir="build/war"/>
+        <war destfile="build/war/HelloWorld.war" webxml="src/web.xml">
+        <classes dir="build/classes"/>
+        </war>
+    </target>
+
+    <target name="undeploy">
+        <delete file="${tomcat}/webapps/HelloWorld.war"/>
+    </target>
+
+</project>
