@@ -1,6 +1,6 @@
 <project>
 
-    <property name="tomcat" value="/Users/rstanonik/apache-tomcat-7.0.32"/>
+    <property name="tomcat" value="/usr/local/apache-tomcat-7.0.32"/>
 
     <target name="clean">
         <delete dir="build"/>
